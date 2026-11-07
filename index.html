@@ -851,6 +851,7 @@
       let activeUtterance = null;
       let englishVoice = null;
       let audioObj = null;
+      let speechSessionId = 0;
 
       // 3. 要素取得
       const playerCard = document.getElementById("playerCard");
@@ -966,7 +967,9 @@
             }
             // タップで行から再生
             if (synth && (!work.audio || !work.audio.url)) {
-              playSpeechFromLine(lIdx);
+              isPlaying = true;
+              playerCard.classList.add("playing");
+              playSpeechFromLine(lIdx, true);
             }
           });
           storyLinesContainer.appendChild(div);
@@ -992,12 +995,15 @@
         if (work.audio && work.audio.url) {
           playAudioFile(work.audio.url);
         } else {
-          playSpeechFromLine(currentLineIndex >= 0 ? currentLineIndex : 0);
+          // currentLineIndex が有効ならそこから、初期状態(-1)なら0行目（1文目）から確実に再生
+          const startLine = (currentLineIndex >= 0 && currentLineIndex < work.lines.length) ? currentLineIndex : 0;
+          playSpeechFromLine(startLine, true);
         }
       }
 
       function pausePlayback() {
         isPlaying = false;
+        speechSessionId++;
         playerCard.classList.remove("playing");
         if (audioObj) {
           audioObj.pause();
@@ -1010,6 +1016,7 @@
 
       function stopAllAudio() {
         isPlaying = false;
+        speechSessionId++;
         playerCard.classList.remove("playing");
         if (audioObj) {
           audioObj.pause();
@@ -1030,20 +1037,47 @@
           audioObj.onerror = function() {
             // エラー時はブラウザ読み上げへフォールバック
             audioEngineBadge.textContent = "🗣 読み上げ切替";
-            playSpeechFromLine(0);
+            playSpeechFromLine(0, true);
           };
         }
         audioObj.play().catch(e => console.log("Audio play error:", e));
       }
 
       // ブラウザ読み上げ（1文ずつハイライト）
-      function playSpeechFromLine(lineIdx) {
+      // isExplicitJump: ユーザー操作や曲開始時の明示的ジャンプ（cancel処理を待機）
+      function playSpeechFromLine(lineIdx, isExplicitJump = false) {
         if (!synth) return;
-        synth.cancel();
+
         const work = works[currentIndex];
         if (lineIdx >= work.lines.length) {
-          // 教訓を読み上げて終了
-          playMoralSpeech(work);
+          playMoralSpeech(work, speechSessionId);
+          return;
+        }
+
+        if (isExplicitJump) {
+          speechSessionId++;
+          const thisSession = speechSessionId;
+          synth.cancel();
+          if (synth.paused) {
+            synth.resume();
+          }
+
+          // Chrome等の非同期cancel完了（interruptedエラー）を待ってから発声
+          setTimeout(() => {
+            if (thisSession !== speechSessionId || !isPlaying) return;
+            executeSpeakLine(lineIdx, thisSession);
+          }, 60);
+        } else {
+          executeSpeakLine(lineIdx, speechSessionId);
+        }
+      }
+
+      function executeSpeakLine(lineIdx, thisSession) {
+        if (!isPlaying || thisSession !== speechSessionId) return;
+
+        const work = works[currentIndex];
+        if (lineIdx >= work.lines.length) {
+          playMoralSpeech(work, thisSession);
           return;
         }
 
@@ -1057,30 +1091,45 @@
         activeUtterance.lang = "en-US";
 
         activeUtterance.onend = function() {
-          if (!isPlaying) return;
-          // 次の文へ
+          if (!isPlaying || thisSession !== speechSessionId) return;
+          // 自然に次の文へ（cancel()を挟まずスムーズに移行）
           setTimeout(() => {
-            if (isPlaying) {
-              playSpeechFromLine(currentLineIndex + 1);
+            if (isPlaying && thisSession === speechSessionId) {
+              playSpeechFromLine(lineIdx + 1, false);
             }
-          }, 250);
+          }, 280);
         };
 
         activeUtterance.onerror = function(e) {
-          if (e.error !== "canceled" && isPlaying) {
-            playSpeechFromLine(currentLineIndex + 1);
+          // cancel() やユーザー操作による中断は正常動作なので次の行へ進めない
+          if (e.error === "canceled" || e.error === "interrupted") {
+            return;
           }
+          console.warn("Speech error on line " + lineIdx + ":", e.error);
+          if (!isPlaying || thisSession !== speechSessionId) return;
+
+          // その他の音声エラー時のみ次行へスキップ
+          setTimeout(() => {
+            if (isPlaying && thisSession === speechSessionId) {
+              playSpeechFromLine(lineIdx + 1, false);
+            }
+          }, 280);
         };
 
+        if (synth.paused) {
+          synth.resume();
+        }
         synth.speak(activeUtterance);
       }
 
       // 結びの教訓の読み上げ
-      function playMoralSpeech(work) {
+      function playMoralSpeech(work, thisSession) {
         clearLineHighlight();
         const moralBox = document.getElementById("moralBox");
-        moralBox.style.boxShadow = "0 0 20px var(--accent-glow)";
-        moralBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        if (moralBox) {
+          moralBox.style.boxShadow = "0 0 20px var(--accent-glow)";
+          moralBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
 
         activeUtterance = new SpeechSynthesisUtterance("Moral: " + work.moral_en);
         activeUtterance.rate = speedRate;
@@ -1088,15 +1137,25 @@
         activeUtterance.lang = "en-US";
 
         activeUtterance.onend = function() {
-          moralBox.style.boxShadow = "none";
+          if (moralBox) moralBox.style.boxShadow = "none";
+          if (!isPlaying || thisSession !== speechSessionId) return;
+          setTimeout(() => {
+            if (isPlaying && thisSession === speechSessionId) {
+              onTrackEnded();
+            }
+          }, 700);
+        };
+
+        activeUtterance.onerror = function(e) {
+          if (moralBox) moralBox.style.boxShadow = "none";
+          if (e.error === "canceled" || e.error === "interrupted") return;
+          if (!isPlaying || thisSession !== speechSessionId) return;
           onTrackEnded();
         };
 
-        activeUtterance.onerror = function() {
-          moralBox.style.boxShadow = "none";
-          onTrackEnded();
-        };
-
+        if (synth.paused) {
+          synth.resume();
+        }
         synth.speak(activeUtterance);
       }
 
@@ -1190,7 +1249,7 @@
         speedBtn.textContent = `速度: ${speedRate}x`;
         if (audioObj) audioObj.playbackRate = speedRate;
         if (isPlaying && synth && synth.speaking) {
-          playSpeechFromLine(currentLineIndex);
+          playSpeechFromLine(currentLineIndex, true);
         }
       });
 
