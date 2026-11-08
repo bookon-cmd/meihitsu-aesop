@@ -436,6 +436,21 @@
       font-weight: 700;
     }
 
+    /* 免責・案内注記 */
+    .audio-disclaimer {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 11.5px;
+      line-height: 1.5;
+      text-align: center;
+      color: var(--text-subtle);
+      background: rgba(212, 163, 89, 0.05);
+      border: 1px dashed rgba(212, 163, 89, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 7px 12px;
+      transition: all 0.2s ease;
+    }
+
     /* 目録を開くクイックバナー */
     .index-trigger-bar {
       width: 100%;
@@ -844,6 +859,11 @@
         <button id="transModeBtn" class="pill-btn">訳: タップ表示</button>
       </div>
 
+      <!-- 免責・補足案内（LibriVox音源とテキストについて） -->
+      <div class="audio-disclaimer" id="audioDisclaimer">
+        ※ 朗読音声（LibriVox）の内容と表示テキストは、翻訳版や朗読者による表現の違いにより一部異なる場合があります。
+      </div>
+
       <!-- 目録への直行バナー -->
       <div class="index-trigger-bar" id="bottomIndexTrigger">
         <span>📚 全50話の目録（インデックス）から選ぶ</span>
@@ -869,7 +889,8 @@
     <!-- フッター -->
     <footer class="app-footer">
       <div>名筆（MEIHITSU）— 音声で味わう文学コレクション</div>
-      <div>テキスト：パブリックドメイン（Vernon Jones版） ｜ 和訳：名筆オリジナル現代語訳</div>
+      <div>テキスト：パブリックドメイン（Vernon Jones版） ｜ 朗読音声：LibriVox ｜ 和訳：名筆オリジナル現代語訳</div>
+      <div style="font-size: 10.5px; opacity: 0.85; margin-top: 2px;">※ 朗読音声（LibriVox）の内容と表示テキストは、翻訳版や朗読者による表現の違いにより一部異なる場合があります。</div>
     </footer>
 
   </div>
@@ -946,6 +967,7 @@
       const speedBtn = document.getElementById("speedBtn");
       const timerBtn = document.getElementById("timerBtn");
       const transModeBtn = document.getElementById("transModeBtn");
+      const audioDisclaimer = document.getElementById("audioDisclaimer");
       const storyLinesContainer = document.getElementById("storyLinesContainer");
       const moralJaText = document.getElementById("moralJaText");
       const moralEnText = document.getElementById("moralEnText");
@@ -1014,13 +1036,21 @@
           audioModeBtn.className = "pill-btn active";
           audioEngineBadge.textContent = "🎙 朗読：LibriVox";
           audioEngineBadge.className = "audio-badge clickable live";
+          audioEngineBadge.title = "音声モード切替: LibriVox (肉声) ⇄ 1文ずつ読み上げ ※翻訳版の違いにより音声とテキストが一部異なる場合があります";
           totalTimeLabel.textContent = work.audio.duration || "1:00";
+          if (audioDisclaimer) {
+            audioDisclaimer.innerHTML = "※ 朗読音声（LibriVox）の内容と表示テキストは、翻訳版や朗読者による表現の違いにより一部異なる場合があります。";
+          }
         } else {
           audioModeBtn.textContent = "音声: 1文ずつ";
           audioModeBtn.className = "pill-btn";
           audioEngineBadge.textContent = "🗣 1文ずつ読み上げ";
           audioEngineBadge.className = "audio-badge clickable";
+          audioEngineBadge.title = "音声モード切替: 1文ずつ読み上げ ⇄ LibriVox (肉声)";
           totalTimeLabel.textContent = `${work.lines.length}文`;
+          if (audioDisclaimer) {
+            audioDisclaimer.innerHTML = "※ 1文ずつ読み上げモード（各文をタップすると、その文だけを個別に発声・復習できます）";
+          }
         }
       }
 
