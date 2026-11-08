@@ -207,12 +207,34 @@
       padding: 3px 10px;
       border-radius: var(--radius-pill);
       border: 1px solid var(--border-color);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .audio-badge.clickable {
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .audio-badge.clickable:hover {
+      border-color: var(--accent);
+      color: var(--text-main);
     }
 
     .audio-badge.live {
       color: #38bdf8;
-      border-color: rgba(56, 189, 248, 0.3);
-      background: rgba(56, 189, 248, 0.08);
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    .playing .audio-badge.live {
+      animation: live-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes live-pulse {
+      0%, 100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); }
+      50% { box-shadow: 0 0 8px rgba(56, 189, 248, 0.4); }
     }
 
     .fable-title-ja {
@@ -339,6 +361,44 @@
       width: 18px;
       height: 18px;
       fill: currentColor;
+    }
+
+    /* シークバー（オーディオ再生時）/ 文進行インジケーター */
+    .seek-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 4px;
+      padding: 0 4px;
+    }
+
+    .seek-slider-wrap {
+      width: 100%;
+      height: 6px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .seek-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-gold);
+      border-radius: 3px;
+      transition: width 0.1s linear;
+    }
+
+    .seek-time-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-subtle);
+      font-family: var(--font-serif);
+      letter-spacing: 0.05em;
     }
 
     /* サブコントロールバー（連続・速度・タイマー・訳） */
@@ -733,7 +793,7 @@
       <div class="fable-meta">
         <div class="meta-badges">
           <span class="no-badge" id="fableNo">No. 01 / 50</span>
-          <span class="audio-badge" id="audioEngineBadge">🗣 ブラウザ読み上げ</span>
+          <button class="audio-badge clickable live" id="audioEngineBadge" title="音声モード切替: LibriVox (肉声) ⇄ 1文ずつ読み上げ">🎙 朗読：LibriVox</button>
           <span class="audio-badge" id="todayBadge" style="display:none; color:var(--accent);">★ 今日の一話</span>
         </div>
         <h1 class="fable-title-ja" id="fableTitleJa">北風と太陽</h1>
@@ -764,8 +824,20 @@
         </button>
       </div>
 
+      <!-- シークバー（オーディオ再生時）/ 文進行インジケーター（読み上げ時） -->
+      <div class="seek-container" id="seekContainer">
+        <div id="seekSliderWrap" class="seek-slider-wrap" title="再生位置を調整">
+          <div id="seekProgressBar" class="seek-progress-bar"></div>
+        </div>
+        <div class="seek-time-row">
+          <span id="currentTimeLabel">0:00</span>
+          <span id="totalTimeLabel">1:22</span>
+        </div>
+      </div>
+
       <!-- サブコントロールバー -->
       <div class="sub-controls">
+        <button id="audioModeBtn" class="pill-btn active" title="音声モード切替: LibriVox (肉声) ⇄ 1文ずつ読み上げ">音声: LibriVox</button>
         <button id="contModeBtn" class="pill-btn active">連続: 順番</button>
         <button id="speedBtn" class="pill-btn">速度: 1.0x</button>
         <button id="timerBtn" class="pill-btn">タイマー: 切</button>
@@ -845,6 +917,7 @@
       let timerRemainingSec = 0;
       let timerInterval = null;
       let transMode = "tap"; // "none" | "tap" | "all"
+      let audioMode = "librivox"; // "librivox" | "speech"
 
       // 音声エンジン用
       const synth = window.speechSynthesis;
@@ -864,6 +937,11 @@
       const prevBtn = document.getElementById("prevBtn");
       const nextBtn = document.getElementById("nextBtn");
       const randomBtn = document.getElementById("randomBtn");
+      const seekSliderWrap = document.getElementById("seekSliderWrap");
+      const seekProgressBar = document.getElementById("seekProgressBar");
+      const currentTimeLabel = document.getElementById("currentTimeLabel");
+      const totalTimeLabel = document.getElementById("totalTimeLabel");
+      const audioModeBtn = document.getElementById("audioModeBtn");
       const contModeBtn = document.getElementById("contModeBtn");
       const speedBtn = document.getElementById("speedBtn");
       const timerBtn = document.getElementById("timerBtn");
@@ -913,6 +991,8 @@
 
       // 6. 設定の復元 (localStorage)
       try {
+        const savedAudio = localStorage.getItem("meihitsu_audio_mode");
+        if (savedAudio === "librivox" || savedAudio === "speech") audioMode = savedAudio;
         const savedTrans = localStorage.getItem("meihitsu_trans_mode");
         if (savedTrans) transMode = savedTrans;
         const savedCont = localStorage.getItem("meihitsu_cont_mode");
@@ -925,6 +1005,34 @@
       } catch(e) {}
       applyTransModeUI();
       applyContModeUI();
+      applyAudioModeUI();
+
+      function applyAudioModeUI() {
+        const work = works[currentIndex];
+        if (audioMode === "librivox" && work.audio && work.audio.url) {
+          audioModeBtn.textContent = "音声: LibriVox";
+          audioModeBtn.className = "pill-btn active";
+          audioEngineBadge.textContent = "🎙 朗読：LibriVox";
+          audioEngineBadge.className = "audio-badge clickable live";
+          totalTimeLabel.textContent = work.audio.duration || "1:00";
+        } else {
+          audioModeBtn.textContent = "音声: 1文ずつ";
+          audioModeBtn.className = "pill-btn";
+          audioEngineBadge.textContent = "🗣 1文ずつ読み上げ";
+          audioEngineBadge.className = "audio-badge clickable";
+          totalTimeLabel.textContent = `${work.lines.length}文`;
+        }
+      }
+
+      function toggleAudioMode() {
+        audioMode = (audioMode === "librivox") ? "speech" : "librivox";
+        applyAudioModeUI();
+        try { localStorage.setItem("meihitsu_audio_mode", audioMode); } catch(e) {}
+        if (isPlaying) {
+          stopAllAudio();
+          startPlayback();
+        }
+      }
 
       // 7. 作品描画
       function loadWork(idx, autoPlay = false) {
@@ -942,14 +1050,11 @@
 
         todayBadge.style.display = (currentIndex === todayIndex) ? "inline-block" : "none";
 
-        // 音声バッジ
-        if (work.audio && work.audio.url) {
-          audioEngineBadge.textContent = "🎙 " + (work.audio.reader || "LibriVox");
-          audioEngineBadge.className = "audio-badge live";
-        } else {
-          audioEngineBadge.textContent = "🗣 ブラウザ読み上げ";
-          audioEngineBadge.className = "audio-badge";
-        }
+        // シークバー初期化
+        seekProgressBar.style.width = "0%";
+        currentTimeLabel.textContent = "0:00";
+
+        applyAudioModeUI();
 
         // 本文描画
         storyLinesContainer.innerHTML = "";
@@ -965,8 +1070,12 @@
             if (transMode === "tap") {
               div.classList.toggle("show-ja");
             }
-            // タップで行から再生
-            if (synth && (!work.audio || !work.audio.url)) {
+            // タップで行の音声確認（LibriVox再生中なら一時停止してその文をWeb Speechで発声）
+            if (synth) {
+              if (audioObj && !audioObj.paused) {
+                audioObj.pause();
+                playerCard.classList.remove("playing");
+              }
               isPlaying = true;
               playerCard.classList.add("playing");
               playSpeechFromLine(lIdx, true);
@@ -992,7 +1101,7 @@
         isPlaying = true;
         playerCard.classList.add("playing");
 
-        if (work.audio && work.audio.url) {
+        if (audioMode === "librivox" && work.audio && work.audio.url) {
           playAudioFile(work.audio.url);
         } else {
           // currentLineIndex が有効ならそこから、初期状態(-1)なら0行目（1文目）から確実に再生
@@ -1028,19 +1137,47 @@
         clearLineHighlight();
       }
 
-      // 音声ファイル再生
+      // 音声ファイル再生 (LibriVox MP3)
       function playAudioFile(url) {
+        if (synth) synth.cancel();
+        clearLineHighlight();
+
         if (!audioObj || audioObj.src !== url) {
+          if (audioObj) {
+            audioObj.pause();
+            audioObj = null;
+          }
           audioObj = new Audio(url);
           audioObj.playbackRate = speedRate;
           audioObj.onended = onTrackEnded;
+          audioObj.ontimeupdate = onAudioTimeUpdate;
+          audioObj.onloadedmetadata = function() {
+            if (audioObj && audioObj.duration) {
+              totalTimeLabel.textContent = formatTime(audioObj.duration);
+            }
+          };
           audioObj.onerror = function() {
-            // エラー時はブラウザ読み上げへフォールバック
+            console.warn("Audio file playback error, falling back to speech synthesis");
             audioEngineBadge.textContent = "🗣 読み上げ切替";
             playSpeechFromLine(0, true);
           };
         }
         audioObj.play().catch(e => console.log("Audio play error:", e));
+      }
+
+      function onAudioTimeUpdate() {
+        if (!audioObj || !isPlaying) return;
+        const cur = audioObj.currentTime || 0;
+        const dur = audioObj.duration || 1;
+        seekProgressBar.style.width = `${Math.min(100, (cur / dur) * 100)}%`;
+        currentTimeLabel.textContent = formatTime(cur);
+      }
+
+      function formatTime(sec) {
+        if (isNaN(sec)) return "0:00";
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return `${m}:${String(s).padStart(2, "0")}`;
       }
 
       // ブラウザ読み上げ（1文ずつハイライト）
@@ -1083,6 +1220,10 @@
 
         currentLineIndex = lineIdx;
         highlightLine(currentLineIndex);
+
+        currentTimeLabel.textContent = `${currentLineIndex + 1}文目`;
+        totalTimeLabel.textContent = `${work.lines.length}文`;
+        seekProgressBar.style.width = `${((currentLineIndex + 1) / work.lines.length) * 100}%`;
 
         const textToRead = work.lines[currentLineIndex].text;
         activeUtterance = new SpeechSynthesisUtterance(textToRead);
@@ -1314,6 +1455,27 @@
         }
       }
 
+      // 音声モード切替ボタン & バッジ
+      audioModeBtn.addEventListener("click", toggleAudioMode);
+      audioEngineBadge.addEventListener("click", toggleAudioMode);
+
+      // シークバー操作
+      seekSliderWrap.addEventListener("click", (e) => {
+        const rect = seekSliderWrap.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+
+        if (audioMode === "librivox" && audioObj && audioObj.duration) {
+          audioObj.currentTime = ratio * audioObj.duration;
+          seekProgressBar.style.width = `${ratio * 100}%`;
+          currentTimeLabel.textContent = formatTime(audioObj.currentTime);
+        } else {
+          const work = works[currentIndex];
+          const targetLine = Math.min(work.lines.length - 1, Math.floor(ratio * work.lines.length));
+          playSpeechFromLine(targetLine, true);
+        }
+      });
+
       // テーマ切替
       themeToggleBtn.addEventListener("click", () => {
         const cur = document.body.getAttribute("data-theme") || "dark";
@@ -1334,7 +1496,7 @@
             <div class="index-no">${String(w.no).padStart(2, "0")}</div>
             <div class="index-item-content">
               <div class="index-item-ja">${escapeHtml(w.title_ja)}</div>
-              <div class="index-item-en">${escapeHtml(w.title_en)}</div>
+              <div class="index-item-en">${escapeHtml(w.title_en)} <span style="font-size:11px; opacity:0.65; margin-left:4px;">⏱ ${w.audio ? w.audio.duration : ''}</span></div>
               <div class="index-item-moral">✦ ${escapeHtml(w.moral_ja)}</div>
             </div>
             ${idx === todayIndex ? '<span class="index-item-badge">今日</span>' : ''}
