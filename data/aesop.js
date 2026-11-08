@@ -4,7 +4,7 @@ window.COLLECTIONS = [
     "title": "イソップ寓話集 珠玉の名作50選",
     "author": "イソップ（アイソーポス）",
     "lang": "en",
-    "credit": "テキスト：パブリックドメイン（V.S. Vernon Jones版）／ 和訳：名筆オリジナル現代語訳",
+    "credit": "テキスト：パブリックドメイン（V.S. Vernon Jones版）／ 朗読：LibriVox（パブリックドメイン）／ 和訳：名筆オリジナル現代語訳",
     "works": [
       {
         "no": 1,
@@ -38,7 +38,12 @@ window.COLLECTIONS = [
             "ja": "力づくの強迫よりも、温かい説得のほうが人の心を動かすのです。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_22_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The North Wind and The Sun",
+          "duration": "1:22"
+        }
       },
       {
         "no": 2,
@@ -72,7 +77,12 @@ window.COLLECTIONS = [
             "ja": "ゆっくりでも着実に進む者が、油断する者に勝つのです。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_five_librivox/fables_05_17_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Hare and The Tortise",
+          "duration": "1:32"
+        }
       },
       {
         "no": 3,
@@ -102,7 +112,12 @@ window.COLLECTIONS = [
             "ja": "アリたちは呆れて首を振り、「歌を歌っていたのかい？ なら結構、冬は踊って過ごすがいいさ！」と言い捨て、背を向けて仕事に戻りました。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_seven_librivox/fables_07_06_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Grasshopper and The Ants",
+          "duration": "1:16"
+        }
       },
       {
         "no": 4,
@@ -136,7 +151,12 @@ window.COLLECTIONS = [
             "ja": "狼は羊の群れを全滅させ、少年は嘘つきは真実を語ったときですら信じてもらえなくなるのだと、深い悲しみとともに学んだのでした。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_two_librivox/fables_02_21_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Sheperd's Boy and The Wolf",
+          "duration": "1:01"
+        }
       },
       {
         "no": 5,
@@ -170,7 +190,12 @@ window.COLLECTIONS = [
             "ja": "「あのときは僕を笑いましたね」とネズミは言いました。「でもこれで、どんなに小さなネズミでも強いライオンを助けられると分かったでしょう」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_19_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Lion And The Mouse",
+          "duration": "1:47"
+        }
       },
       {
         "no": 6,
@@ -208,7 +233,12 @@ window.COLLECTIONS = [
             "ja": "この話を聞いた欲深い男が真似をしてわざと川に斧を投げ込み、現れた金の斧を「私のものです」と嘘をついたところ、神に怒られて追い払われ、自分の斧すら取り戻せなくなりました。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_17_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "Mercury and the Woodman",
+          "duration": "2:35"
+        }
       },
       {
         "no": 7,
@@ -242,7 +272,12 @@ window.COLLECTIONS = [
             "ja": "小石が沈むにつれて水面がぐんぐんせり上がり、ついくちばしの届くところまで上がってきたので、カラスは思う存分水を飲んで喉を潤すことができました。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_20_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Crow And The Pitcher",
+          "duration": "1:24"
+        }
       },
       {
         "no": 8,
@@ -260,7 +295,12 @@ window.COLLECTIONS = [
             "ja": "しかしどうしても届きません。キツネは諦めると、いかにも尊大で何事もなかったかのような顔をして立ち去りながらこう言いました。「熟していると思ったが、どうやらまだ酸っぱくて不味いブドウに違いない」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_01_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Fox and The Grapes",
+          "duration": "0:46"
+        }
       },
       {
         "no": 9,
@@ -286,7 +326,12 @@ window.COLLECTIONS = [
             "ja": "その瞬間、くわえていた本物の肉が口からポロリと川に落ち、激しい流れに呑まれて二度と戻ってきませんでした。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_four_librivox/fables_04_19_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Dog and the Shadow",
+          "duration": "0:47"
+        }
       },
       {
         "no": 10,
@@ -312,7 +357,12 @@ window.COLLECTIONS = [
             "ja": "コウノトリは長いくちばしを壺の奥深くまで差し込んで美味そうに平らげましたが、キツネは壺の縁を舐めることしかできず、お腹をすかせたまま恥じ入って帰るしかありませんでした。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_two_librivox/fables_02_01_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Fox and The Stork",
+          "duration": "1:11"
+        }
       },
       {
         "no": 11,
@@ -346,7 +396,12 @@ window.COLLECTIONS = [
             "ja": "ネズミたちは命からがら逃げ惑い、狭い隙間に震えながら隠れました。「さようなら」と田舎のネズミは言いました。「いつも怯えて豪華なごちそうを食べるより、安心してパンの耳をかじるほうがずっと幸せだ」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_six_librivox/fables_06_16_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Town Mouse and The Country Mouse",
+          "duration": "2:03"
+        }
       },
       {
         "no": 12,
@@ -376,7 +431,12 @@ window.COLLECTIONS = [
             "ja": "すると、それまで黙って座っていた年老いたネズミが静かに立ち上がり、こう問いかけました。「確かに見事な案だが……一体我々のうちの誰が、あの恐ろしい猫の首に鈴をつけに行くのかね？」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_06_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Mice in Council",
+          "duration": "1:30"
+        }
       },
       {
         "no": 13,
@@ -406,7 +466,12 @@ window.COLLECTIONS = [
             "ja": "羊飼いが最初に捕まえたのが、羊の毛皮をかぶったその狼でした。羊飼いは本物の羊だと勘違いしたまま、その場で狼を一突きにして仕留めたのでした。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_two_librivox/fables_02_02_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Wolf In Sheep's Clothing",
+          "duration": "1:04"
+        }
       },
       {
         "no": 14,
@@ -436,7 +501,12 @@ window.COLLECTIONS = [
             "ja": "娘がその気になって本当に得意げに首を振った瞬間、頭の上の桶が地面へと真っ逆さまに転がり落ち、すべてのミルクが大地にこぼれ落ちてしまいました。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_two_librivox/fables_02_04_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Milkmaid and Her Pail",
+          "duration": "1:42"
+        }
       },
       {
         "no": 15,
@@ -470,7 +540,12 @@ window.COLLECTIONS = [
             "ja": "「僕が欲しかったのはそれだけだよ」とキツネは笑って言いました。「チーズのお礼に忠告をあげよう。お世辞ばかり言う相手を決して信用してはならないよ」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_09_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Fox And The Crow",
+          "duration": "1:36"
+        }
       },
       {
         "no": 16,
@@ -500,7 +575,12 @@ window.COLLECTIONS = [
             "ja": "こうして一瞬にして大金持ちになろうと欲張ったばかりに、夫婦は毎日確実に手に入っていた黄金の恵みまでも永遠に失ってしまったのでした。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_02_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Goose That Laid The Golden Eggs",
+          "duration": "1:07"
+        }
       },
       {
         "no": 17,
@@ -534,7 +614,12 @@ window.COLLECTIONS = [
             "ja": "「熊はこう忠告してくれたよ」と男は答えました。「危険が迫った途端に自分だけ逃げ出すような友とは、二度と旅をするな、とな」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_two_librivox/fables_02_12_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Bear and The Travellers",
+          "duration": "1:14"
+        }
       },
       {
         "no": 18,
@@ -564,7 +649,12 @@ window.COLLECTIONS = [
             "ja": "その間、しなやかな葦たちは風に身を任せて頭を下げ、嵐が過ぎ去ると何事もなかったかのように立ち上がり、穏やかな風の中でそよいでいたのでした。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_two_librivox/fables_02_16_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Oak and The Reeds",
+          "duration": "1:02"
+        }
       },
       {
         "no": 19,
@@ -590,7 +680,12 @@ window.COLLECTIONS = [
             "ja": "しかし轟くような咆哮の代わりに、情けないロバの「ヒヒーン」という鳴き声が響き渡りました。飼い主はその声ですぐに自分のロバだと見破り、太い棒を手に取って身の程知らずのロバをこっぴどく叩き据えました。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_three_librivox/fables_03_11_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Ass In The Lion's Skin",
+          "duration": "1:04"
+        }
       },
       {
         "no": 20,
@@ -620,7 +715,12 @@ window.COLLECTIONS = [
             "ja": "そこでカエルはさらに深く息を吸い込み、ふくらんで、ふくらんで、張り裂けんばかりに息を詰め込んだ瞬間、ポン！と音を立てて破裂してしまいました。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_four_librivox/fables_04_25_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Ox and The Frog",
+          "duration": "1:13"
+        }
       },
       {
         "no": 21,
@@ -654,7 +754,12 @@ window.COLLECTIONS = [
             "ja": "誰の意見にも従おうとした二人は、とうとう棒にロバの足を縛りつけ、肩に担いで歩き出しました。しかし橋の上でロバが暴れて川へ真っ逆さまに落ち、溺れ死んでしまったのでした。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_seven_librivox/fables_07_22_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Miller, His Son and their Ass",
+          "duration": "2:24"
+        }
       },
       {
         "no": 22,
@@ -684,7 +789,12 @@ window.COLLECTIONS = [
             "ja": "すると一匹の老いたキツネがニヤリと笑って言いました。「お前さんの言う通りかもしれないがね。もし自分自身が尾を失っていなかったら、そんな忠告を我々にするはずがないだろう！」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_four_librivox/fables_04_08_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Fox Without A Tail",
+          "duration": "1:03"
+        }
       },
       {
         "no": 23,
@@ -714,7 +824,12 @@ window.COLLECTIONS = [
             "ja": "手や足は手遅れになって初めて気づいたのです。胃袋はただ座っていたのではなく、食べ物を消化して体中へ命と力の源を送り届けていたのだということを。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_seven_librivox/fables_07_11_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Belly and The Members",
+          "duration": "1:27"
+        }
       },
       {
         "no": 24,
@@ -732,7 +847,12 @@ window.COLLECTIONS = [
             "ja": "「なんて身勝手なやつだ！」と牛は怒って言いました。「お前は干し草を食べられないくせに、お腹をすかせている私に一口も食べさせようとしないではないか！」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_three_librivox/fables_03_22_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Dog in The Manger",
+          "duration": "1:04"
+        }
       },
       {
         "no": 25,
@@ -754,7 +874,12 @@ window.COLLECTIONS = [
             "ja": "すると木が怒って声を上げました。「恩知らずな人間どもめ！ 私の涼しい影に救われながら、役に立たないと悪口を言うとは、なんという浅ましさだ！」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_seven_librivox/fables_07_16_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Travellers and The Plane-Tree",
+          "duration": "1:31"
+        }
       },
       {
         "no": 26,
@@ -776,7 +901,12 @@ window.COLLECTIONS = [
             "ja": "ツルは静かにこう答えました。「確かにそうかもしれません。ですが私はこの翼で雲の彼方まで高く飛ぶことができます。あなたの立派な羽は、地面から飛び立つことすらできないではありませんか」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_12_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Peacock And The Crane",
+          "duration": "0:58"
+        }
       },
       {
         "no": 27,
@@ -798,7 +928,12 @@ window.COLLECTIONS = [
             "ja": "農夫は冷たくこう答えました。「お前の言い分はそうかもしれんが、私は泥棒どもの群れの中で一緒にいたお前を捕まえたのだ。悪党と行動を共にした以上、同じ運命を受けるがいい」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_seven_librivox/fables_07_03_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Farmer and The Stork",
+          "duration": "1:14"
+        }
       },
       {
         "no": 28,
@@ -824,7 +959,12 @@ window.COLLECTIONS = [
             "ja": "サルが「騙したな！」と怒鳴ると、キツネはせせら笑いました。「それっぽっちの頭しかないのに、自分が動物たちの王にふさわしいと本気で思っていたのかい？」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_three_librivox/fables_03_04_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Monkey As King",
+          "duration": "1:27"
+        }
       },
       {
         "no": 29,
@@ -846,7 +986,12 @@ window.COLLECTIONS = [
             "ja": "お母さんガニは必死になってまっすぐ前へ進もうとしましたが、自分自身もどうしても横にしか進むことができず、恥ずかしくなって黙り込んでしまいました。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_two_librivox/fables_02_25_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Crab and His Mother",
+          "duration": "0:57"
+        }
       },
       {
         "no": 30,
@@ -876,7 +1021,12 @@ window.COLLECTIONS = [
             "ja": "無力で丸腰になって戻ってきたライオンを見て、もはや何も恐れるもののなくなったきこりは、太いこん棒を手にして哀れなライオンを門前払いにして叩き出しました。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_nine_librivox/fables_09_17_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Lion in Love",
+          "duration": "1:00"
+        }
       },
       {
         "no": 31,
@@ -898,7 +1048,12 @@ window.COLLECTIONS = [
             "ja": "すると年老いた猟犬が近寄ってきて言いました。「何をそんなに得意になっているんだい？ その鈴は立派な行いへの褒美ではなく、お前が狂暴な危ない犬だとみんなに知らせるための恥ずべき印じゃないか！」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_04_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Mischievous Dog",
+          "duration": "1:22"
+        }
       },
       {
         "no": 32,
@@ -920,7 +1075,12 @@ window.COLLECTIONS = [
             "ja": "猟犬はこう答えました。「あなたはお忘れですね。今夜のごちそうのために走るのと、たった一つの命を守るために必死で走るのとでは、わけが違うのですよ」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_six_librivox/fables_06_06_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Hound and The Hare",
+          "duration": "1:02"
+        }
       },
       {
         "no": 33,
@@ -946,7 +1106,12 @@ window.COLLECTIONS = [
             "ja": "羊飼いが駆けつけてカラスを捕まえ、羽を切り落として子どもたちのおもちゃに持ち帰りました。「この鳥は何？」と尋ねる子どもたちに、羊飼いは笑って言いました。「本人は鷲のつもりだったようだが、ただの愚かなカラスさ」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_seven_librivox/fables_07_20_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Eagle, the Jackdaw and the Shepherd",
+          "duration": "1:42"
+        }
       },
       {
         "no": 34,
@@ -976,7 +1141,12 @@ window.COLLECTIONS = [
             "ja": "押しつぶされそうになった飼い主は恐怖で悲鳴を上げ、駆けつけた下男たちが棒でロバを散々に打ち据え、厩舎へと追い返したのでした。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_two_librivox/fables_02_07_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Ass and The Lap-Dog",
+          "duration": "2:03"
+        }
       },
       {
         "no": 35,
@@ -1002,7 +1172,12 @@ window.COLLECTIONS = [
             "ja": "砂浜の上でピチピチと跳ね回る魚たちを見ながら、漁師はため息をついて言いました。「お前たちはいやはや天邪鬼だな！ 私が笛を吹いてやったときは踊らなかったくせに、演奏をやめた途端にそんなに一生懸命踊るなんて！」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_nine_librivox/fables_09_25_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Fisherman Piping",
+          "duration": "1:11"
+        }
       },
       {
         "no": 36,
@@ -1024,7 +1199,12 @@ window.COLLECTIONS = [
             "ja": "「返済の日が来たとき、お前たち二人からどうやって小麦を取り立てればよいというのだ？」賢明な羊はそう言って、きっぱりと頼みを断りました。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_five_librivox/fables_05_21_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Sheep, The Wolf, and The Stag",
+          "duration": "1:02"
+        }
       },
       {
         "no": 37,
@@ -1046,7 +1226,12 @@ window.COLLECTIONS = [
             "ja": "男はこう返しました。「虫けらの嘲笑など痛くも痒くもない。些細なことに怒り狂ってはならないという教訓を学べたなら、それで十分だ」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_seven_librivox/fables_07_12_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Bald Man and the Fly",
+          "duration": "1:16"
+        }
       },
       {
         "no": 38,
@@ -1068,7 +1253,12 @@ window.COLLECTIONS = [
             "ja": "素焼きの壺は叫びました。「とんでもない、お断りだよ！ 僕が一番恐れているのは君なんだ！ 僕が君にぶつかっても、君が僕にぶつかっても、粉々に砕け散るのは僕のほうなんだから！」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_five_librivox/fables_05_25_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Two Pots",
+          "duration": "0:55"
+        }
       },
       {
         "no": 39,
@@ -1090,7 +1280,12 @@ window.COLLECTIONS = [
             "ja": "鶴が約束の褒美を求めると、狼は鋭い牙を剥き出しにして不敵に笑いました。「恩知らずな鳥め。狼の口の中に頭を突っ込んでおきながら、無傷で首を引き抜けたこと以上の褒美がどこにあるというのだ？」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_six_librivox/fables_06_09_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Wolf and The Crane",
+          "duration": "1:00"
+        }
       },
       {
         "no": 40,
@@ -1116,7 +1311,12 @@ window.COLLECTIONS = [
             "ja": "そばにいた人が声をかけました。「欲張らずに半分の実を手放してごらん、坊や。そうすれば手はすんなりと抜けるはずだよ」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_three_librivox/fables_03_25_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Boy and The Filberts",
+          "duration": "1:07"
+        }
       },
       {
         "no": 41,
@@ -1134,7 +1334,12 @@ window.COLLECTIONS = [
             "ja": "やせ細って飢えに苦しむ馬はため息をついて言いました。「ああ、もしお前が本当に私の姿を立派にしたいと願うなら、毛並みを梳かすのを半分にして、もっとまともな餌を食べさせておくれ！」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_10_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Horse and the Groom",
+          "duration": "1:06"
+        }
       },
       {
         "no": 42,
@@ -1156,7 +1361,12 @@ window.COLLECTIONS = [
             "ja": "「だが腹をすかせた私にとっては、世界中のすべての宝石を集めたところで、たった一粒の大麦のほうが遥かにありがたいのだよ」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_seven_librivox/fables_07_01_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Cock and The Jewel",
+          "duration": "0:47"
+        }
       },
       {
         "no": 43,
@@ -1178,7 +1388,12 @@ window.COLLECTIONS = [
             "ja": "ところが海綿は大量の水をぐんぐん吸い込んで鉛のように重くなり、哀れなロバは重みで立ち上がることすらできず、そのまま川底に沈んで溺れてしまったのでした。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_two_librivox/fables_02_20_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Ass and His Burdens",
+          "duration": "1:24"
+        }
       },
       {
         "no": 44,
@@ -1204,7 +1419,12 @@ window.COLLECTIONS = [
             "ja": "すると一頭が岩の上から叫び返しました。「だからこそ逃げ出すのだよ！ 我々のような新参者のために古くからの仲間を粗末に扱ったお前が、明日新しい山羊が来たら我々をどう扱うか、目に見えているではないか！」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_twelve_librivox/fables_12_07_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Goatherd and the Wild Goats",
+          "duration": "1:40"
+        }
       },
       {
         "no": 45,
@@ -1230,7 +1450,12 @@ window.COLLECTIONS = [
             "ja": "これを聞いたサテュロスは恐怖のあまり飛び上がりました。「お前との友情は今日限りだ！ たった一つの同じ口から熱い息と冷たい息を使い分けるような二枚舌の生き物とは、到底一緒に暮らせない！」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_five_librivox/fables_05_08_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Man and The Satyr",
+          "duration": "1:24"
+        }
       },
       {
         "no": 46,
@@ -1260,7 +1485,12 @@ window.COLLECTIONS = [
             "ja": "コウノトリは池のカエルたちを片っ端から丸呑みにして食い尽くし、カエルたちは恐怖の中で涙ながらに悔やみましたが手遅れでした。おとなしい丸太のほうが、残酷な暴君より遥かにましだったのです。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_four_librivox/fables_04_01_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Frogs Asking for a King",
+          "duration": "1:42"
+        }
       },
       {
         "no": 47,
@@ -1286,7 +1516,12 @@ window.COLLECTIONS = [
             "ja": "「ですが私は鳥です！ この翼が見えませんか？」とコウモリは叫び、二枚舌を使って再び難を逃れました。しかし日和見の嘘つきは、やがてどちらからも見捨てられる運命にあるのです。"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_one_librivox/fables_01_07_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Bat And The Weasels",
+          "duration": "1:36"
+        }
       },
       {
         "no": 48,
@@ -1308,7 +1543,12 @@ window.COLLECTIONS = [
             "ja": "雄牛は顔も上げずにそっけなくこう答えました。「おいおい、お前がいつ止まったのかも知らなかったし、いつ飛んで行こうが痛くも痒くもないよ」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_two_librivox/fables_02_11_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Gnat and The Bull",
+          "duration": "0:48"
+        }
       },
       {
         "no": 49,
@@ -1334,7 +1574,12 @@ window.COLLECTIONS = [
             "ja": "死にゆくライオンは虫の息でため息をつきました。「ああ、強者の攻撃なら耐えもするが、あの最も卑怯で愚かなロバにすら踏み躙られるとは、二重の死の屈辱ではないか！」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_three_librivox/fables_03_13_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Old Lion",
+          "duration": "1:08"
+        }
       },
       {
         "no": 50,
@@ -1356,7 +1601,12 @@ window.COLLECTIONS = [
             "ja": "すると聞いていた町の一人が男の言葉を遮ってこう言いました。「もしそれが真実なら、わざわざロドス島の証人など必要ない。ここがロドス島だ、さあ今ここで跳んでみせてくれ！」"
           }
         ],
-        "audio": null
+        "audio": {
+          "url": "https://archive.org/download/aesop_fables_volume_two_librivox/fables_02_24_aesop.mp3",
+          "reader": "LibriVox",
+          "title": "The Boasting Traveller",
+          "duration": "0:56"
+        }
       }
     ]
   }
